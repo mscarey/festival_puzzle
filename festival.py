@@ -74,4 +74,33 @@ valid_weekend_schedules = filter(
     lambda schedule: len(schedule.screened_movies) == 3, every_weekend_schedule
 )
 
-pprint.pprint(list(valid_weekend_schedules))
+answer_choices = [
+    WeekendSchedule(
+        thursday=("Limelight", "Harvest"), friday=("Limelight",), saturday=("Harvest",)
+    ),
+    WeekendSchedule(
+        thursday=("Harvest",),
+        friday=("Greed", "Limelight"),
+        saturday=("Limelight", "Greed"),
+    ),
+    WeekendSchedule(
+        thursday=("Harvest",), friday=("Limelight",), saturday=("Limelight", "Greed")
+    ),
+    WeekendSchedule(
+        thursday=("Greed", "Harvest", "Limelight"),
+        friday=("Limelight",),
+        saturday=("Greed",),
+    ),
+    WeekendSchedule(
+        thursday=("Greed", "Harvest"),
+        friday=("Limelight", "Harvest"),
+        saturday=("Harvest",),
+    ),
+]
+
+correct_answer = [
+    schedule
+    for schedule in valid_weekend_schedules
+    if any(schedule == answer_choice for answer_choice in answer_choices)
+]
+pprint.pprint(correct_answer)
