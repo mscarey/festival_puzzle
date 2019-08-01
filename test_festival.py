@@ -67,11 +67,6 @@ def test_schedules_are_orders_of_available_movies(answer_choice, expected):
     ],
 )
 def test_thursday_rule(answer_choice, expected):
-    """
-    Checks whether all of the WeekendSchedule's daily schedules
-    are orderings of the available movies, of length at least 1,
-    without repeating any movies on the same day.
-    """
     assert ANSWER_CHOICES[answer_choice].thursday_rule == expected
 
 
@@ -88,11 +83,6 @@ def test_thursday_rule(answer_choice, expected):
     ],
 )
 def test_friday_rule(answer_choice, expected):
-    """
-    Checks whether all of the WeekendSchedule's daily schedules
-    are orderings of the available movies, of length at least 1,
-    without repeating any movies on the same day.
-    """
     assert ANSWER_CHOICES[answer_choice].friday_rule == expected
 
 
@@ -109,11 +99,6 @@ def test_friday_rule(answer_choice, expected):
     ],
 )
 def test_saturday_rule(answer_choice, expected):
-    """
-    Checks whether all of the WeekendSchedule's daily schedules
-    are orderings of the available movies, of length at least 1,
-    without repeating any movies on the same day.
-    """
     assert ANSWER_CHOICES[answer_choice].saturday_rule == expected
 
 
@@ -131,8 +116,7 @@ def test_saturday_rule(answer_choice, expected):
 )
 def test_get_correct_answer(answer_choice, expected):
     """
-    Checks whether all of the WeekendSchedule's daily schedules
-    are orderings of the available movies, of length at least 1,
-    without repeating any movies on the same day.
+    Checks whether the WeekendSchedule satisfies all the rules
+    in the logic puzzle.
     """
     assert ANSWER_CHOICES[answer_choice].valid_weekend_schedule == expected
