@@ -19,11 +19,11 @@ import pprint
 from typing import NamedTuple, Sequence, Set
 
 movies = ["Greed", "Harvest", "Limelight"]
-day_schedules = [
+day_schedules = (
     schedule
     for schedule_length in range(1, len(movies) + 1)
     for schedule in permutations(movies, r=schedule_length)
-]
+)
 
 
 def thursday_rule(movies: Sequence[str]):
@@ -63,12 +63,12 @@ class WeekendSchedule(NamedTuple):
         return {*self.thursday, *self.friday, *self.saturday}
 
 
-every_weekend_schedule = [
+every_weekend_schedule = (
     WeekendSchedule(thursday, friday, saturday)
     for thursday in filter(thursday_rule, day_schedules)
     for friday in filter(friday_rule, day_schedules)
     for saturday in filter(saturday_rule, day_schedules)
-]
+)
 
 valid_weekend_schedules = filter(
     lambda schedule: len(schedule.screened_movies) == 3, every_weekend_schedule
